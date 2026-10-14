@@ -1,0 +1,117 @@
+/* ============================================================
+   Curso Visualizador Geográfico Censo 2024 — tokens del player
+   Retematizado del motor SCORM v1 al sistema vigente: skill
+   ine-design (.claude/skills/ine-design/), variante data-theme="censo".
+   Este archivo es el ÚNICO puente: player.css sigue consumiendo los
+   nombres v1 (--c-*), que aquí se resuelven contra los tokens del
+   skill. Nunca escribir un hex a mano fuera de la sección "Tokens
+   ine-design" — regla de CLAUDE.md (decisión 13).
+   ============================================================ */
+
+/* ---- Fuentes empaquetadas, no traidas de la red ----
+   Subconjunto latino de Google Fonts (Montserrat y Open Sans, SIL Open Font
+   License 1.1) copiado dentro del paquete. Razon: un SCORM que depende de
+   fonts.gstatic.com se degrada si la red institucional bloquea el CDN y
+   filtra una peticion externa desde Academia INE por cada alumno.
+   Se declaran los mismos pesos que servia Google; el archivo es el mismo
+   para todos ellos (fuente variable), asi que se descarga una sola vez. */
+@font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 600; font-display: swap;
+  src: url('assets/fonts/Montserrat-var.woff2') format('woff2'); }
+@font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 700; font-display: swap;
+  src: url('assets/fonts/Montserrat-var.woff2') format('woff2'); }
+@font-face { font-family: 'Open Sans'; font-style: normal; font-weight: 400; font-display: swap;
+  src: url('assets/fonts/OpenSans-var.woff2') format('woff2'); }
+@font-face { font-family: 'Open Sans'; font-style: normal; font-weight: 600; font-display: swap;
+  src: url('assets/fonts/OpenSans-var.woff2') format('woff2'); }
+@font-face { font-family: 'Open Sans'; font-style: normal; font-weight: 700; font-display: swap;
+  src: url('assets/fonts/OpenSans-var.woff2') format('woff2'); }
+@font-face { font-family: 'Open Sans'; font-style: italic; font-weight: 400; font-display: swap;
+  src: url('assets/fonts/OpenSans-var-italic.woff2') format('woff2'); }
+
+:root {
+  /* ---- Tokens ine-design (subconjunto que este curso usa) ----
+     Valores copiados literalmente de tokens/colors.css, typography.css
+     y spacing.css del skill; si el skill cambia, se actualiza aquí. */
+  --ine-blue:      #1E3B7D;
+  --ine-blue-dark: #16294F;
+  --ine-red:       #E2231A;
+  --censo-yellow:  #F8AA00;
+  --censo-purple:  #814997;
+  --censo-orange:  #EE7D00;
+  --censo-red:     #B12020;
+  --censo-green:   #94B422;
+  --censo-cyan:    #009EE2;
+  --censo-blue-mid:#2F529F;
+  --censo-navy:    #223267;
+  --blue-050:      #eef2fb;
+  --blue-100:      #dde5f5;
+  --gray-50:       #f6f7f9;
+  --gray-200:      #dcdfe6;
+  --gray-500:      #6b7385;
+  --gray-600:      #4a5162;
+  --gray-700:      #333949;
+  --gray-900:      #12151c;
+  --white:         #ffffff;
+  --color-primary-hover: #17306a;
+  --color-success: var(--censo-green);
+  --color-danger:  var(--censo-red);
+  --font-sans: 'Montserrat', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --font-ui:   'Open Sans', Arial, Helvetica, sans-serif;
+  --radius-lg: 12px;
+  --shadow-md: 0 4px 12px rgba(30,59,125,0.10);
+  --focus-ring: 0 0 0 3px rgba(0,158,226,0.45);
+
+  /* ---- Acentos de categoría, variante censo ----
+     Lo ÚNICO que un tema de submarca redefine (badges, chips).
+     Los chips de módulo del player usan estos, en este orden. */
+  --accent-category:     var(--censo-orange);
+  --accent-category-alt: var(--censo-purple);
+  --accent-category-2:   var(--censo-cyan);
+  --accent-category-3:   var(--censo-green);
+  --accent-category-4:   var(--censo-red);
+  --accent-category-5:   var(--censo-yellow);
+
+  /* ---- Puente hacia player.css (nombres v1) ---- */
+  --c-azul:        var(--ine-blue);        /* preponderancia institucional */
+  --c-azul-medio:  var(--censo-blue-mid);
+  --c-azul-oscuro: var(--censo-navy);
+  --c-azul-claro:  var(--blue-050);       /* fondo de agrupaciones en diagramas */
+  --c-amarillo:    var(--censo-yellow);
+  --c-rojo:        var(--censo-red);
+  --c-morado:      var(--censo-purple);
+  --c-verde:       var(--censo-green);
+  --c-naranjo:     var(--censo-orange);
+  --c-texto:       var(--gray-900);
+  --c-texto-suave: var(--gray-600); /* gray-500 (#6b7385) mide 4,44:1 sobre --gray-50,
+                                      bajo el 4,5:1 de AA; gray-600 llega a 7,41:1 */
+  --c-fondo:       var(--gray-50);
+  --c-blanco:      var(--white);
+  --c-borde:       var(--gray-200);
+  --c-correcto:    #2e7d32; /* verde de estado accesible sobre fondo claro;
+                               --censo-green (94B422) no alcanza contraste AA en texto */
+  --c-incorrecto:  var(--censo-red);
+  /* Tipografía: Open Sans para el cuerpo — es web (decisión 14);
+     Montserrat reservado a títulos vía --font-titulos (ver player.css) */
+  --font-base:     var(--font-ui);
+  --font-titulos:  var(--font-sans);
+  --radio:         var(--radius-lg);
+  --sombra:        var(--shadow-md);
+}
+
+/* ---- Banner VERSIÓN BETA ----
+   Propio de esta entrega; se retira en la producción de Fase 4. */
+/* Azul institucional, no amarillo: el player ya emite su propio aviso amarillo
+   (.aviso-local, "vista previa sin LMS") y dos franjas amarillas contiguas se
+   leen como una sola. */
+#beta-banner {
+  background: var(--ine-blue-dark);
+  color: var(--white);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  padding: 5px 12px;
+  letter-spacing: .04em;
+  flex: 0 0 auto;
+}
+#beta-banner strong { text-transform: uppercase; }

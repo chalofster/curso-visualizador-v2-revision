@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest identifier="cl.ine.censo.visualizador-v2.M2" version="1.0"
+  xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2"
+  xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd
+                      http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+  <metadata><schema>ADL SCORM</schema><schemaversion>1.2</schemaversion></metadata>
+  <organizations default="ORG-1">
+    <organization identifier="ORG-1">
+      <title>Curso Visualizador Geográfico Censo 2024 · M2 — ¿Cómo armo mi ficha territorial?</title>
+      <item identifier="ITEM-1" identifierref="RES-1" isvisible="true">
+        <title>Curso Visualizador Geográfico Censo 2024 · M2 — ¿Cómo armo mi ficha territorial?</title>
+        <adlcp:masteryscore>60</adlcp:masteryscore>
+      </item>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="RES-1" type="webcontent" adlcp:scormtype="sco" href="index.html">
+      <file href="assets/capturas/v2_m2_ficha_partes.png"/>
+      <file href="assets/capturas/v2_m2_manzana_tres_estados.png"/>
+      <file href="assets/capturas/v2_m2_paso_comparable.png"/>
+      <file href="assets/capturas/v2_m2_paso_crear_ficha.png"/>
+      <file href="assets/capturas/v2_m2_paso_referencias.png"/>
+      <file href="assets/fonts/Montserrat-var.woff2"/>
+      <file href="assets/fonts/OpenSans-var-italic.woff2"/>
+      <file href="assets/fonts/OpenSans-var.woff2"/>
+      <file href="assets/video/E-R2-video.jpg"/>
+      <file href="assets/video/E-R2-video.mp4"/>
+      <file href="assets/video/E-R2-video.vtt"/>
+      <file href="contenido.js"/>
+      <file href="imsmanifest.xml"/>
+      <file href="index.html"/>
+      <file href="player.css"/>
+      <file href="player.js"/>
+      <file href="scorm-api.js"/>
+      <file href="tokens.css"/>
+    </resource>
+  </resources>
+</manifest>

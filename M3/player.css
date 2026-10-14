@@ -1,0 +1,428 @@
+/* Motor SCORM — estilos genéricos. Los colores vienen de tokens.css (design system). */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+body { font-family: var(--font-base); color: var(--c-texto); background: var(--c-fondo); }
+#app { display: flex; flex-direction: column; height: 100vh; }
+
+/* ---------- Barra superior ---------- */
+#barra-superior {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--c-azul); color: #fff; padding: 10px 16px; flex: 0 0 auto;
+}
+#btn-menu { background: none; border: 1px solid rgba(255,255,255,.4); color: #fff;
+  font-size: 18px; border-radius: 8px; padding: 4px 10px; cursor: pointer; }
+#btn-menu:hover { background: rgba(255,255,255,.15); }
+#titulo-curso { font-weight: 700; font-size: 15px; flex: 1;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#progreso-wrap { display: flex; align-items: center; gap: 8px; min-width: 140px; }
+#progreso-barra { width: 110px; height: 10px; background: rgba(255,255,255,.25);
+  border-radius: 6px; overflow: hidden; }
+#progreso-relleno { height: 100%; width: 0; background: var(--c-amarillo);
+  border-radius: 6px; transition: width .4s; }
+#progreso-texto { font-size: 12px; font-weight: 700; }
+
+/* ---------- Cuerpo ---------- */
+#cuerpo { display: flex; flex: 1 1 auto; min-height: 0; }
+#indice { width: 270px; flex: 0 0 auto; background: #fff; border-right: 1px solid var(--c-borde);
+  overflow-y: auto; padding: 12px 0; }
+#indice.oculto { display: none; }
+.ind-modulo { padding: 10px 16px 4px; font-size: 11px; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--c-texto-suave); display: flex; align-items: center; gap: 6px; }
+.ind-modulo .punto { width: 10px; height: 10px; border-radius: 50%; flex: 0 0 auto; }
+.ind-pantalla { display: block; width: 100%; text-align: left; background: none; border: none;
+  padding: 7px 16px 7px 32px; font-size: 13px; color: var(--c-texto); cursor: pointer;
+  font-family: inherit; border-left: 3px solid transparent; }
+.ind-pantalla:hover { background: var(--c-fondo); }
+.ind-pantalla.actual { border-left-color: var(--c-azul); font-weight: 700; background: var(--c-fondo); }
+.ind-pantalla.visitada::after { content: " ✓"; color: var(--c-correcto); font-weight: 700; }
+.ind-pantalla.bloqueada { color: #aab0c0; cursor: not-allowed; }
+
+#escenario { flex: 1 1 auto; overflow-y: auto; padding: 28px clamp(16px, 5vw, 64px); }
+.pantalla { max-width: 860px; margin: 0 auto; animation: aparecer .35s ease; }
+@keyframes aparecer { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; } }
+
+/* ---------- Barra inferior ---------- */
+#barra-inferior { flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 18px; background: #fff; border-top: 1px solid var(--c-borde); }
+#posicion { font-size: 12px; color: var(--c-texto-suave); }
+.btn { font-family: inherit; font-size: 14px; font-weight: 700; border-radius: 10px;
+  padding: 10px 18px; cursor: pointer; border: none; }
+.btn-primario { background: var(--c-azul); color: #fff; }
+.btn-primario:hover { background: var(--c-azul-medio); }
+.btn-secundario { background: #fff; color: var(--c-azul); border: 2px solid var(--c-azul); }
+.btn-secundario:hover { background: var(--c-fondo); }
+.btn:disabled { opacity: .35; cursor: not-allowed; }
+
+/* ---------- Componentes de pantalla ---------- */
+.chip-modulo { display: inline-block; color: #fff; font-size: 11px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; border-radius: 20px; padding: 5px 14px; }
+.pantalla h1 { color: var(--c-azul); font-size: clamp(24px, 4vw, 34px); margin: 14px 0 10px; line-height: 1.2;
+  font-family: var(--font-titulos, var(--font-base)); }
+.pantalla h2 { color: var(--c-azul); font-size: 20px; margin: 22px 0 8px;
+  font-family: var(--font-titulos, var(--font-base)); }
+.pantalla p { margin: 10px 0; line-height: 1.65; font-size: 15.5px; }
+.pantalla ul, .pantalla ol { margin: 10px 0 10px 22px; line-height: 1.65; font-size: 15.5px; }
+.pantalla li { margin: 6px 0; }
+.destacado { background: #fff; border-left: 6px solid var(--c-amarillo); border-radius: 0 var(--radio) var(--radio) 0;
+  padding: 14px 18px; margin: 16px 0; box-shadow: var(--sombra); }
+.zigzag { height: 8px; margin: 18px 0; border-radius: 4px;
+  background: repeating-linear-gradient(135deg, var(--c-amarillo) 0 14px, var(--c-rojo) 14px 28px,
+    var(--c-morado) 28px 42px, var(--c-verde) 42px 56px, var(--c-naranjo) 56px 70px); }
+
+.grilla-tarjetas { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px; margin: 18px 0; }
+.tarjeta { background: #fff; border-radius: var(--radio); padding: 18px; box-shadow: var(--sombra);
+  border-top: 5px solid var(--c-azul); }
+.tarjeta h3 { font-size: 15px; color: var(--c-azul); margin-bottom: 6px; }
+.tarjeta p { font-size: 13.5px; margin: 4px 0; line-height: 1.5; }
+.tarjeta .icono { font-size: 26px; margin-bottom: 8px; }
+
+.cifra-grande { font-size: 34px; font-weight: 800; color: var(--c-azul); line-height: 1.1; }
+.cifra-etiqueta { font-size: 12.5px; color: var(--c-texto-suave); margin-top: 4px; }
+
+.dos-columnas { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 18px 0; }
+@media (max-width: 700px) { .dos-columnas { grid-template-columns: 1fr; } }
+.columna { background: #fff; border-radius: var(--radio); padding: 18px; box-shadow: var(--sombra); }
+.columna h3 { margin-bottom: 8px; }
+
+/* Gráfico de barras simple */
+.grafico { background: #fff; border-radius: var(--radio); padding: 20px; box-shadow: var(--sombra); margin: 18px 0; }
+.grafico .g-titulo { font-weight: 700; font-size: 14px; margin-bottom: 14px; color: var(--c-azul); }
+.g-fila { display: flex; align-items: center; gap: 10px; margin: 8px 0; }
+.g-eti { width: 56px; font-size: 12.5px; font-weight: 700; color: var(--c-texto-suave); text-align: right; }
+.g-barra-wrap { flex: 1; background: var(--c-fondo); border-radius: 6px; height: 26px; }
+.g-barra { height: 100%; border-radius: 6px; display: flex; align-items: center; justify-content: flex-end;
+  color: #fff; font-size: 12px; font-weight: 700; padding-right: 8px; min-width: 34px;
+  transition: width .8s ease; }
+.g-nota { font-size: 11.5px; color: var(--c-texto-suave); margin-top: 10px; }
+
+/* Video */
+.video-wrap { background: #000; border-radius: var(--radio); overflow: hidden; margin: 18px 0;
+  box-shadow: var(--sombra); }
+.video-wrap video { display: block; width: 100%; max-height: 62vh; }
+.video-titulo { background: var(--c-azul-oscuro); color: #fff; font-size: 13px; padding: 8px 14px; }
+.placeholder-video { border: 2px dashed var(--c-azul-medio); border-radius: var(--radio);
+  padding: 20px; margin: 18px 0; background: #fff; }
+.placeholder-video .pv-tag { font-weight: 800; color: var(--c-azul-medio); font-size: 13px; }
+
+/* ---------- Actividades ---------- */
+.actividad { background: #fff; border-radius: var(--radio); padding: 22px; box-shadow: var(--sombra); margin: 18px 0; }
+.actividad .act-instruccion { font-weight: 700; margin-bottom: 14px; }
+.opcion { display: block; width: 100%; text-align: left; margin: 8px 0; padding: 12px 14px;
+  border: 2px solid var(--c-borde); border-radius: 10px; background: #fff; cursor: pointer;
+  font-family: inherit; font-size: 14.5px; line-height: 1.45; }
+.opcion:hover:not(:disabled) { border-color: var(--c-azul); }
+.opcion.correcta { border-color: var(--c-correcto); background: #edf7ee; }
+.opcion.incorrecta { border-color: var(--c-incorrecto); background: #fdeeee; }
+.opcion:disabled { cursor: default; }
+.retro { margin-top: 12px; padding: 12px 14px; border-radius: 10px; font-size: 14px; line-height: 1.5; }
+.retro.ok { background: #edf7ee; border-left: 5px solid var(--c-correcto); }
+.retro.no { background: #fdeeee; border-left: 5px solid var(--c-incorrecto); }
+.retro.info { background: var(--c-fondo); border-left: 5px solid var(--c-azul); }
+
+/* Clasificador */
+.clasif-fichas { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.ficha { border: 2px solid var(--c-azul); color: var(--c-azul); background: #fff; border-radius: 20px;
+  padding: 7px 14px; font-size: 13.5px; font-weight: 700; cursor: pointer; font-family: inherit; }
+.ficha.seleccionada { background: var(--c-azul); color: #fff; }
+.clasif-cats { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+@media (max-width: 700px) { .clasif-cats { grid-template-columns: 1fr; } }
+.cat { border: 2px dashed var(--c-borde); border-radius: var(--radio); padding: 12px; min-height: 110px; }
+.cat h4 { font-size: 13.5px; margin-bottom: 8px; }
+.cat .cat-zona { display: flex; flex-wrap: wrap; gap: 6px; }
+.cat .ficha-puesta { border-radius: 16px; padding: 5px 12px; font-size: 12.5px; font-weight: 700; color: #fff; }
+.cat.recibe { border-color: var(--c-azul); background: var(--c-fondo); }
+.ficha-puesta.ok { background: var(--c-correcto); }
+.ficha-puesta.no { background: var(--c-incorrecto); text-decoration: line-through; }
+
+/* Flashcards */
+.flash-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.flash { perspective: 900px; cursor: pointer; min-height: 150px; }
+.flash-inner { position: relative; width: 100%; height: 100%; min-height: 150px;
+  transition: transform .5s; transform-style: preserve-3d; }
+.flash.volteada .flash-inner { transform: rotateY(180deg); }
+.flash-cara { position: absolute; inset: 0; backface-visibility: hidden; border-radius: var(--radio);
+  padding: 14px; display: flex; align-items: center; justify-content: center; text-align: center;
+  box-shadow: var(--sombra); }
+.flash-frente { background: var(--c-azul); color: #fff; font-weight: 800; font-size: 15px; }
+.flash-dorso { background: #fff; transform: rotateY(180deg); font-size: 12px; line-height: 1.45;
+  overflow-y: auto; align-items: flex-start; border: 2px solid var(--c-azul); }
+
+/* Ordenar */
+.orden-item { display: flex; align-items: center; gap: 10px; background: #fff;
+  border: 2px solid var(--c-borde); border-radius: 10px; padding: 10px 12px; margin: 8px 0; }
+.orden-item .num { font-weight: 800; color: var(--c-azul); width: 22px; }
+.orden-item .flechas { margin-left: auto; display: flex; gap: 4px; }
+.orden-item button { border: 1px solid var(--c-borde); background: var(--c-fondo); border-radius: 6px;
+  cursor: pointer; padding: 3px 9px; font-size: 13px; }
+.orden-item.ok { border-color: var(--c-correcto); background: #edf7ee; }
+.orden-item.no { border-color: var(--c-incorrecto); background: #fdeeee; }
+
+/* Emparejar */
+.pareja { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; margin: 10px 0; }
+.pareja label { font-size: 14px; background: #fff; border-radius: 10px; padding: 10px 12px;
+  border: 2px solid var(--c-borde); }
+.pareja select { font-family: inherit; font-size: 13.5px; padding: 9px 10px; border-radius: 10px;
+  border: 2px solid var(--c-borde); background: #fff; max-width: 46vw; }
+.pareja.ok label, .pareja.ok select { border-color: var(--c-correcto); }
+.pareja.no label, .pareja.no select { border-color: var(--c-incorrecto); }
+
+/* Examen */
+.examen-preg { background: #fff; border-radius: var(--radio); padding: 18px 20px; margin: 14px 0;
+  box-shadow: var(--sombra); }
+.examen-preg h3 { font-size: 15px; margin-bottom: 10px; }
+.resultado-examen { text-align: center; padding: 26px; border-radius: var(--radio); margin: 18px 0; }
+.resultado-examen.aprobado { background: #edf7ee; border: 2px solid var(--c-correcto); }
+.resultado-examen.reprobado { background: #fdeeee; border: 2px solid var(--c-incorrecto); }
+.resultado-examen .puntaje { font-size: 44px; font-weight: 800; }
+
+.aviso-local { background: var(--c-amarillo); color: var(--c-azul-oscuro); font-size: 12px;
+  text-align: center; padding: 4px 10px; }
+
+/* Portadas */
+.portada { text-align: center; padding: 30px 10px; }
+.portada img.logo { max-width: 300px; width: 60%; margin: 10px auto 18px; display: block; }
+/* Logos INE + Censo por separado y con fondo transparente, directo sobre --c-fondo
+   (revisión de M1, 07-10-2026). INE siempre primero (regla de lockup de ine-design). */
+.portada .logos { display: flex; flex-wrap: wrap; gap: 18px 36px; justify-content: center; align-items: center;
+  margin: 10px auto 18px; max-width: 520px; }
+.portada .logos img { height: 88px; width: auto; max-width: 100%; }
+.portada .bajada { color: var(--c-texto-suave); font-size: 15px; }
+.logos-cierre { display: flex; gap: 26px; justify-content: center; align-items: center; margin: 22px 0; }
+.logos-cierre img { max-height: 84px; max-width: 40vw; }
+
+@media (max-width: 860px) {
+  #indice { position: absolute; z-index: 20; height: calc(100vh - 52px); top: 52px; left: 0;
+    box-shadow: 4px 0 18px rgba(0,0,0,.18); }
+  #progreso-barra { width: 70px; }
+}
+
+/* ============================================================
+   Componentes de contenido añadidos para el curso v2 (26-08-2026).
+   Genéricos: solo usan los nombres de token v1 (--c-*, --radio,
+   --sombra), nunca un hex ni un token de ine-design — por eso
+   viven en el motor y se propagan a plantillas/scorm-player/.
+   ============================================================ */
+
+/* Captura de pantalla con rótulos superpuestos.
+   Los rótulos van en HTML posicionado, no quemados en el PNG:
+   al recongelar la UI se reemplaza la imagen y el texto sigue vivo. */
+.captura { margin: 18px 0; }
+.captura .marco { position: relative; border-radius: var(--radio); overflow: hidden;
+  box-shadow: var(--sombra); border: 1px solid var(--c-borde); background: #fff; }
+.captura img { display: block; width: 100%; }
+/* Rótulos en naranjo censo, para que se distingan de la interfaz capturada, que es azul
+   (revisión de M1, 06-10-2026). Texto --c-texto: 6,58:1 sobre el naranjo; blanco daría 2,77:1. */
+.captura .rot { position: absolute; background: var(--c-naranjo); color: var(--c-texto); font-size: 12px;
+  font-weight: 700; line-height: 1.3; padding: 5px 9px; border-radius: 6px; max-width: 40%;
+  box-shadow: 0 2px 8px rgba(0,0,0,.35); }
+.captura .rot.alt { background: var(--c-rojo); color: var(--c-blanco); }
+/* Número de paso en el pie de la figura: el mismo color que su rótulo, para cruzarlos de un vistazo */
+.paso-num { display: inline-flex; align-items: center; justify-content: center; min-width: 1.6em; height: 1.6em;
+  padding: 0 .3em; border-radius: 999px; background: var(--c-naranjo); color: var(--c-texto);
+  font-weight: 700; font-size: .95em; margin-right: 2px; }
+.captura figcaption { font-size: 12.5px; color: var(--c-texto-suave); margin-top: 8px; line-height: 1.5; }
+.provisional { display: inline-block; background: var(--c-amarillo); color: var(--c-azul-oscuro);
+  font-weight: 800; font-size: 10.5px; letter-spacing: .04em; text-transform: uppercase;
+  padding: 2px 7px; border-radius: 4px; margin-right: 8px; }
+@media (max-width: 700px) { .captura .rot { font-size: 10px; padding: 3px 6px; max-width: 46%; } }
+
+/* Tabla institucional */
+.tabla-wrap { overflow-x: auto; margin: 18px 0; }
+.tabla { width: 100%; border-collapse: collapse; background: #fff; border-radius: var(--radio);
+  overflow: hidden; box-shadow: var(--sombra); font-size: 14.5px; }
+.tabla th { background: var(--c-azul); color: #fff; text-align: left; padding: 10px 14px;
+  font-size: 13px; letter-spacing: .02em; }
+.tabla td { padding: 10px 14px; border-top: 1px solid var(--c-borde); vertical-align: top; line-height: 1.55; }
+.tabla tbody tr:nth-child(even) td { background: var(--c-fondo); }
+
+/* Advertencia — filete rojo. Distinta de .destacado (amarillo), que solo enfatiza. */
+.advertencia { background: #fff; border-left: 6px solid var(--c-rojo);
+  border-radius: 0 var(--radio) var(--radio) 0; padding: 14px 18px; margin: 16px 0; box-shadow: var(--sombra); }
+
+/* Badge de categoría: diferencia módulos sin pintar la interfaz.
+   La regla de preponderancia institucional prohíbe el color por módulo. */
+.badge { display: inline-block; background: var(--c-azul); color: #fff; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .04em; padding: 3px 9px; border-radius: 999px; margin-bottom: 8px; }
+.badge-1 { background: var(--c-naranjo); color: var(--c-texto); }
+.badge-2 { background: var(--c-morado); }
+.badge-3 { background: var(--c-verde);   color: var(--c-azul-oscuro); }
+.badge-4 { background: var(--c-rojo); }
+.badge-5 { background: var(--c-amarillo); color: var(--c-azul-oscuro); }
+
+.tres-columnas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 18px 0; }
+@media (max-width: 760px) { .tres-columnas { grid-template-columns: 1fr; } }
+
+/* Misión: enunciado + puntos de decisión + valor esperado.
+   Se repite en las cinco prácticas guiadas del curso. */
+.mision { background: #fff; border-radius: var(--radio); box-shadow: var(--sombra); margin: 18px 0; overflow: hidden; }
+.mision .m-cab { background: var(--c-azul); color: #fff; padding: 10px 18px; font-weight: 700;
+  font-size: 12.5px; letter-spacing: .05em; text-transform: uppercase; }
+.mision .m-cuerpo { padding: 4px 18px 18px; }
+.mision h3 { color: var(--c-azul); font-size: 13px; margin: 16px 0 4px; text-transform: uppercase; letter-spacing: .04em; }
+.valor-esperado { background: var(--c-fondo); border-radius: 8px; padding: 12px 14px; margin-top: 14px; font-size: 14px; }
+
+/* Ayuda plegable dentro de una misión: <details>/<summary> nativo, sin JavaScript,
+   operable con teclado (Enter o espacio sobre el resumen) y anunciado por lectores de pantalla. */
+.ayuda { border: 2px solid var(--c-borde); border-radius: 8px; margin: 14px 0; background: var(--c-blanco); }
+.ayuda summary { cursor: pointer; font-weight: 700; color: var(--c-azul); padding: 10px 14px; }
+.ayuda summary:focus-visible { outline: 3px solid var(--c-azul-oscuro); outline-offset: 2px; }
+.ayuda[open] summary { border-bottom: 1px solid var(--c-borde); }
+.ayuda .ayuda-cuerpo { padding: 4px 14px 12px; font-size: 14.5px; }
+
+/* Enlace de salida a la herramienta viva */
+.enlace-externo { display: inline-block; background: var(--c-azul); color: #fff; text-decoration: none;
+  font-weight: 700; font-size: 14.5px; padding: 11px 22px; border-radius: var(--radio);
+  box-shadow: var(--sombra); margin: 14px 0; }
+.enlace-externo:hover { background: var(--c-azul-medio); }
+.enlace-externo:focus-visible { outline: 3px solid var(--c-azul-oscuro); outline-offset: 2px; }
+
+/* Dato aún no confirmado por escrito: se marca, no se inventa. */
+.pendiente { background: var(--c-amarillo); color: var(--c-azul-oscuro); font-weight: 700;
+  padding: 1px 6px; border-radius: 4px; font-size: .92em; }
+
+/* Rejilla de indicadores clave, con algunos marcados. Nace en M2 (los 5 KPI
+   del resumen, 3 de ellos aditivos), pero no sabe nada de ese contenido:
+   .kpi.marcado es "este cumple la condición", la condición la pone el curso. */
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 18px 0; }
+.kpi { background: #fff; border: 2px solid var(--c-borde); border-radius: var(--radio);
+  padding: 14px; text-align: center; }
+.kpi .k-val { font-size: 22px; font-weight: 800; color: var(--c-azul); line-height: 1.15; }
+.kpi .k-rot { font-size: 12.5px; color: var(--c-texto-suave); margin-top: 4px; line-height: 1.4; }
+.kpi .k-marca { display: block; font-size: 11px; font-weight: 700; margin-top: 8px;
+  text-transform: uppercase; letter-spacing: .04em; }
+.kpi.marcado { border-color: var(--c-correcto); }
+.kpi.marcado .k-marca { color: var(--c-correcto); }
+.kpi.excluido { border-color: var(--c-incorrecto); background: var(--c-fondo); }
+.kpi.excluido .k-val { color: var(--c-texto-suave); }
+.kpi.excluido .k-marca { color: var(--c-incorrecto); }
+
+/* Par correcto / incorrecto lado a lado. El curso lo usa para contrastar
+   un cálculo bien hecho con el mismo cálculo mal hecho. */
+.comparacion { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 18px 0; }
+@media (max-width: 760px) { .comparacion { grid-template-columns: 1fr; } }
+.comparacion .col { background: #fff; border-radius: var(--radio); padding: 16px 18px;
+  border-top: 6px solid var(--c-borde); box-shadow: var(--sombra); }
+.comparacion .col h4 { font-size: 13px; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 10px; }
+.comparacion .col .cifra { font-size: 26px; font-weight: 800; line-height: 1.15; margin: 8px 0 4px; }
+.comparacion .col .detalle { font-size: 13px; color: var(--c-texto-suave); line-height: 1.55; }
+.comparacion .col.ok { border-top-color: var(--c-correcto); }
+.comparacion .col.ok h4, .comparacion .col.ok .cifra { color: var(--c-correcto); }
+.comparacion .col.no { border-top-color: var(--c-incorrecto); }
+.comparacion .col.no h4, .comparacion .col.no .cifra { color: var(--c-incorrecto); }
+
+/* Lista sin viñeta pesada, para enumerar dentro de una tarjeta. */
+.lista-limpia { list-style: none; margin: 6px 0 0; padding: 0; }
+.lista-limpia li { font-size: 13.5px; line-height: 1.5; padding: 3px 0 3px 14px; position: relative; }
+.lista-limpia li::before { content: "·"; position: absolute; left: 3px; color: var(--c-azul); font-weight: 800; }
+
+/* ============================================================
+   Diagramas en HTML (revisión de M1, 07-10-2026). Texto real, no imagen:
+   se lee con lector de pantalla, se adapta al ancho y no espera al
+   congelamiento de la interfaz. Las flechas y marcas son bordes, no
+   caracteres, para que el lector de pantalla no las anuncie.
+   ============================================================ */
+
+/* Flujo de pasos numerados: cómo es cada módulo */
+.pantalla .flujo { list-style: none; margin: 18px 0; padding: 0; display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
+.pantalla .flujo li { position: relative; margin: 0; background: var(--c-blanco); border: 1px solid var(--c-borde);
+  border-radius: var(--radio); padding: 14px 14px 16px; box-shadow: var(--sombra);
+  font-size: 14px; line-height: 1.5; }
+.pantalla .flujo li strong { display: block; color: var(--c-azul); font-family: var(--font-titulos);
+  font-size: 15px; margin: 8px 0 4px; }
+.pantalla .flujo li:not(:last-child)::after { content: ""; position: absolute; top: 50%; right: -16px;
+  border: 7px solid transparent; border-left: 9px solid var(--c-azul); transform: translateY(-50%); }
+.pantalla .flujo li.fuera { border: 2px dashed var(--c-naranjo); background: var(--c-fondo); }
+.pantalla .flujo .etiqueta { display: inline-block; margin-left: 6px; font-size: 11px; font-weight: 700;
+  letter-spacing: .04em; text-transform: uppercase; color: var(--c-texto); background: var(--c-naranjo);
+  border-radius: 999px; padding: 2px 8px; vertical-align: middle; }
+@media (max-width: 760px) {
+  .pantalla .flujo { grid-template-columns: 1fr; gap: 20px; }
+  .pantalla .flujo li:not(:last-child)::after { top: auto; bottom: -17px; right: auto; left: 28px;
+    border: 7px solid transparent; border-top: 9px solid var(--c-azul); transform: none; }
+}
+
+/* Escala de niveles: hasta dónde llega el automático */
+.escala { margin: 18px 0; }
+.escala-cuerpo { display: flex; gap: 0; align-items: stretch; }
+.escala-grupo { border-radius: var(--radio); padding: 10px 10px 12px; min-width: 0; }
+.escala-grupo.auto { flex: 3 1 0; background: var(--c-azul-claro); border: 1px solid var(--c-borde); }
+.escala-grupo.mano { flex: 2 1 0; background: var(--c-blanco); border: 2px dashed var(--c-borde); }
+.pantalla .escala-cab { margin: 0 0 8px; font-size: 12.5px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .04em; color: var(--c-azul); }
+.pantalla .escala-grupo ol { list-style: none; margin: 0; padding: 0; display: flex; gap: 8px; }
+.pantalla .escala-grupo li { margin: 0; flex: 1 1 0; min-width: 0; background: var(--c-blanco); border: 1px solid var(--c-borde);
+  border-radius: 8px; padding: 8px; font-weight: 700; font-size: 13.5px; line-height: 1.3; }
+.escala-grupo li small { display: block; font-weight: 400; font-size: 12px; color: var(--c-texto-suave); margin-top: 4px; }
+.nivel-letra { display: inline-flex; align-items: center; justify-content: center; width: 1.7em; height: 1.7em;
+  border-radius: 6px; font-weight: 800; margin-left: 6px; text-transform: none; }
+.escala-grupo.auto .nivel-letra { background: var(--c-azul); color: var(--c-blanco); }
+.escala-grupo.mano .nivel-letra { background: var(--c-blanco); color: var(--c-texto); border: 2px solid var(--c-texto-suave); }
+.escala-tope { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  width: 64px; text-align: center; font-size: 11px; font-weight: 700; color: var(--c-rojo); line-height: 1.25; }
+.escala-tope::before { content: ""; display: block; width: 4px; flex: 1 1 auto; min-height: 18px;
+  background: var(--c-rojo); border-radius: 2px; margin-bottom: 6px; }
+.pantalla .escala-eje { display: flex; justify-content: space-between; font-size: 12px; color: var(--c-texto-suave);
+  margin: 8px 2px 0; border-top: 2px solid var(--c-borde); padding-top: 6px; }
+@media (max-width: 760px) {
+  .escala-cuerpo { flex-direction: column; }
+  .pantalla .escala-grupo ol { flex-direction: column; }
+  .escala-tope { width: auto; flex-direction: row; padding: 8px 0; }
+  .escala-tope::before { width: 40px; height: 4px; min-height: 0; flex: 0 0 auto; margin: 0 8px 0 0; }
+  .pantalla .escala-eje { display: none; }
+}
+
+/* Barras pareadas: el mismo par de territorios en dos medidas, cada una con su propia escala.
+   Nunca un eje compartido entre un porcentaje y una cantidad. Barra anclada en cero,
+   extremo de dato redondeado de 4px, valor rotulado al final de cada barra. */
+.barras-par { margin: 18px 0; }
+.barras-par .bp-paneles { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 700px) { .barras-par .bp-paneles { grid-template-columns: 1fr; } }
+.bp-panel { background: var(--c-blanco); border: 1px solid var(--c-borde); border-radius: var(--radio);
+  padding: 12px 14px 14px; min-width: 0; }
+.pantalla .bp-titulo { margin: 0 0 10px; font-weight: 700; color: var(--c-azul); font-size: 14.5px; }
+.pantalla .bp-titulo span { display: block; font-weight: 400; font-size: 12.5px; color: var(--c-texto-suave); }
+.bp-fila { display: grid; grid-template-columns: 8.2em minmax(0, 1fr); align-items: center; gap: 8px; margin: 8px 0; }
+.bp-etq { font-size: 13.5px; }
+.bp-pista { display: flex; align-items: center; gap: 6px; border-left: 2px solid var(--c-texto-suave); min-width: 0; }
+.bp-barra { display: block; height: 18px; border-radius: 0 4px 4px 0; flex: 0 0 auto; }
+.bp-a { background: var(--c-naranjo); }
+.bp-c { background: var(--c-azul-medio); }
+.bp-valor { font-size: 13.5px; font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.barras-par figcaption { font-size: 12.5px; color: var(--c-texto-suave); margin-top: 8px; line-height: 1.5; }
+
+/* Matriz de 3 × 3 del mapa comparado (M3, 08-10-2026). Es una tabla, no una imagen: el lector de
+   pantalla anuncia fila (eje vertical) y columna (eje horizontal) de cada casilla. No reproduce los
+   colores de la paleta de la aplicación: enseña a leer la cuadrícula, no a reconocer un color. */
+.pantalla .matriz3-wrap { margin: 18px 0; overflow-x: auto; }
+.pantalla .matriz3 { border-collapse: separate; border-spacing: 6px; width: 100%; max-width: 560px; margin: 0 auto;
+  table-layout: fixed; }
+/* Con anchos fijos, la primera fila manda: la celda vacía de la esquina fija la columna de rótulos y las tres
+   casillas se reparten el resto por igual. Sin esto, la columna «Alto» salía más angosta según su texto. */
+.pantalla .matriz3 thead tr:first-child .m3-vacio { width: 20%; }
+.pantalla .matriz3 caption { caption-side: bottom; text-align: left; font-size: 12.5px; color: var(--c-texto-suave);
+  padding-top: 8px; line-height: 1.5; }
+.pantalla .matriz3 th { font-size: 12px; font-weight: 700; color: var(--c-azul); text-transform: uppercase;
+  letter-spacing: .04em; padding: 4px 6px; background: none; }
+.pantalla .matriz3 thead th { text-align: center; }
+.pantalla .matriz3 tbody th { text-align: right; white-space: nowrap; }
+.pantalla .matriz3 .m3-eje { text-transform: none; letter-spacing: 0; font-size: 12.5px; color: var(--c-texto-suave); font-weight: 600; }
+/* El corte de cada tramo va bajo su rótulo: la tabla hace de leyenda anotada (M3-R-03). */
+.pantalla .matriz3 th small { display: block; text-transform: none; letter-spacing: 0; font-weight: 400;
+  font-size: 11px; color: var(--c-texto-suave); white-space: normal; }
+.pantalla .matriz3 td { width: 28%; height: 72px; text-align: center; vertical-align: middle; background: var(--c-blanco);
+  border: 1px solid var(--c-borde); border-radius: 8px; font-size: 13px; padding: 6px; line-height: 1.3; }
+.pantalla .matriz3 td.m3-vacio { background: none; border: none; height: auto; }
+.pantalla .matriz3 td strong { display: block; font-size: 14px; }
+.pantalla .matriz3 td small { display: block; font-size: 11.5px; color: var(--c-texto-suave); margin-top: 3px; }
+.pantalla .matriz3 td.sigue { background: var(--c-azul-claro); }
+.pantalla .matriz3 td.discordante { border: 2px dashed var(--c-naranjo); }
+@media (max-width: 520px) {
+  .pantalla .matriz3 { border-spacing: 4px; }
+  .pantalla .matriz3 thead tr:first-child .m3-vacio { width: 24%; }
+  .pantalla .matriz3 td { height: 64px; font-size: 12px; padding: 4px; }
+  .pantalla .matriz3 td strong { font-size: 12.5px; }
+  /* Se achica y no se oculta: en M3-R-03 el texto chico son los valores de cada comuna. */
+  .pantalla .matriz3 td small, .pantalla .matriz3 th small { font-size: 10.5px; }
+}

@@ -1,0 +1,154 @@
+WEBVTT
+
+1
+00:00:00.300 --> 00:00:03.258
+Haces clic en una manzana del mapa y el polígono
+
+2
+00:00:03.258 --> 00:00:06.093
+que se ilumina no es la manzana que esperabas.
+
+3
+00:00:06.093 --> 00:00:08.866
+Son dos paños separados, con un mismo código.
+
+4
+00:00:08.866 --> 00:00:13.611
+No es un error del visualizador: es una medida de protección, y tiene nombre.
+
+5
+00:00:14.611 --> 00:00:20.372
+Mientras más detalle territorial tiene un dato, más fácil es reconocer a alguien.
+
+6
+00:00:20.372 --> 00:00:23.147
+En una manzana con muy pocas viviendas,
+
+7
+00:00:23.147 --> 00:00:27.557
+un solo indicador puede bastar para identificar a una familia.
+
+8
+00:00:27.557 --> 00:00:30.544
+Por eso el Censo no publica todo tal cual.
+
+9
+00:00:31.544 --> 00:00:32.694
+La regla es una sola.
+
+10
+00:00:32.694 --> 00:00:36.420
+Las manzanas y entidades con entre una y tres viviendas particulares
+
+11
+00:00:36.420 --> 00:00:39.762
+ocupadas con moradores presentes no se publican por separado:
+
+12
+00:00:39.762 --> 00:00:42.939
+se agrupan con unidades cercanas del mismo estrato censal.
+
+13
+00:00:43.939 --> 00:00:45.869
+Y no se agrupan con cualquiera.
+
+14
+00:00:45.869 --> 00:00:48.048
+Primero, con el vecino más cercano,
+
+15
+00:00:48.048 --> 00:00:51.970
+para alterar lo menos posible la representación del territorio.
+
+16
+00:00:51.970 --> 00:00:57.076
+Segundo, entre las candidatas cercanas, con la que tenga menos viviendas ocupadas.
+
+17
+00:00:57.076 --> 00:00:59.877
+Y tercero, dentro del mismo nivel geográfico:
+
+18
+00:00:59.877 --> 00:01:02.492
+la misma zona censal o la misma localidad.
+
+19
+00:01:02.492 --> 00:01:04.858
+Solo si ahí no hay candidatos válidos,
+
+20
+00:01:04.858 --> 00:01:08.220
+la agrupación se hace con una zona o localidad vecina.
+
+21
+00:01:09.220 --> 00:01:13.788
+El resultado se dibuja con una geometría llamada polígono multiparte.
+
+22
+00:01:13.788 --> 00:01:17.495
+Es una técnica de los sistemas de información geográfica
+
+23
+00:01:17.495 --> 00:01:21.334
+que permite agrupar varios elementos en un único registro,
+
+24
+00:01:21.334 --> 00:01:24.578
+tanto en la cartografía como en la base de datos.
+
+25
+00:01:24.578 --> 00:01:27.755
+Por eso dos manzanas separadas en terreno pueden
+
+26
+00:01:27.755 --> 00:01:30.602
+compartir un mismo código y una misma fila.
+
+27
+00:01:31.602 --> 00:01:33.736
+¿Qué significa esto para tu trabajo?
+
+28
+00:01:33.736 --> 00:01:37.410
+Que antes de escribir «en esta manzana viven tantas personas»,
+
+29
+00:01:37.410 --> 00:01:39.010
+conviene mirar el polígono.
+
+30
+00:01:39.010 --> 00:01:41.026
+Si abarca más de un paño separado,
+
+31
+00:01:41.026 --> 00:01:44.878
+puede ser una unidad agrupada, y el dato corresponde al conjunto.
+
+32
+00:01:45.878 --> 00:01:49.040
+Nada de esto es un capricho técnico.
+
+33
+00:01:49.040 --> 00:01:52.466
+La Ley 17.374, del Secreto Estadístico,
+
+34
+00:01:52.466 --> 00:01:57.122
+y la Ley 19.628, sobre protección de la vida privada,
+
+35
+00:01:57.122 --> 00:02:02.305
+obligan al Instituto Nacional de Estadísticas a que ninguna
+
+36
+00:02:02.305 --> 00:02:08.103
+información publicada permita identificar a personas ni a hogares.
+
+37
+00:02:08.103 --> 00:02:10.914
+El visualizador te dice cuántos.
+
+38
+00:02:10.914 --> 00:02:12.144
+Nunca quiénes.
+

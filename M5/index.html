@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="censo">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curso Visualizador Geográfico Censo 2024</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="player.css">
+</head>
+<body>
+  <div id="app">
+    <header id="barra-superior">
+      <button id="btn-menu" aria-label="Abrir índice del curso" title="Índice">☰</button>
+      <div id="titulo-curso"></div>
+      <div id="progreso-wrap" title="Progreso del curso">
+        <div id="progreso-barra"><div id="progreso-relleno"></div></div>
+        <span id="progreso-texto">0%</span>
+      </div>
+    </header>
+    <div id="cuerpo">
+      <nav id="indice" aria-label="Índice del curso"></nav>
+      <main id="escenario" tabindex="-1"></main>
+    </div>
+    <footer id="barra-inferior">
+      <button id="btn-anterior" class="btn btn-secundario">← Anterior</button>
+      <span id="posicion"></span>
+      <button id="btn-siguiente" class="btn btn-primario">Siguiente →</button>
+    </footer>
+  </div>
+  <script src="contenido.js"></script>
+  <script src="scorm-api.js"></script>
+  <script src="player.js"></script>
+</body>
+</html>
